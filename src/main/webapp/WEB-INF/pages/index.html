@@ -77,22 +77,66 @@
                     </div>
                 </div>
                 <!--获取在线用户-->
-                <div class="row" v-if="users.length>0" style="margin-top:16px;border: 1px solid #e5e5e5;">
-                    <div class="m-head"><h5>在线会员</h5></div>
-                    <div id="img-size">
-                        <div class="col-sm-4 m-col-padding" style="background: transparent;" v-for="item in users">
-                            <div class="col-sm-4">
-                                <a :href="'/leek_bbs/skipPage/personal?id='+item.id" target="_blank"><img :src="'/leek_bbs/'+item.picture" class="img-circle" alt=""></a>
+<!--                <div class="row" v-if="users.length>0" style="margin-top:16px;border: 1px solid #e5e5e5;">-->
+<!--                    <div class="m-head"><h5>在线会员</h5></div>-->
+<!--                    <div id="img-size">-->
+<!--                        <div class="col-sm-4 m-col-padding" style="background: transparent;" v-for="item in users">-->
+<!--                            <div class="col-sm-4">-->
+<!--                                <a :href="'/leek_bbs/skipPage/personal?id='+item.id" target="_blank"><img :src="'/leek_bbs/'+item.picture" class="img-circle" alt=""></a>-->
+<!--                            </div>-->
+<!--                            <div class="col-sm-8">-->
+<!--                                <span><a :href="'/leek_bbs/skipPage/personal?id='+item.id" style="display:block;margin-top:10px;color: red;">{{item.username}}</a></span>-->
+<!--                                &lt;!&ndash;<span style="font-size:6px;color: #999;"></span>&ndash;&gt;-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+            <div class="col-sm-4" v-cloak>
+                <div class="row m-mar-left" style="min-width: 350px;border: 1px solid #e5e5e5;">
+<!--                    <div class="m-sign" @click="signIn()">-->
+<!--                        <div class="col-sm-6" style="padding:0;height:100%;background-color: #ff6f3d;">-->
+<!--                            <div style="margin:20px 18px;" >-->
+<!--                                <div class="col-sm-4" style="padding-left: 0px;"><a href="javascript:;"><span class="glyphicon glyphicon-list-alt" style="font-size: 24px;"></span></a></div>-->
+<!--                                <div class="col-sm-8" style="margin-top: -4px;padding: 0px;cursor:pointer;">-->
+<!--                                    <span v-if="isSign" style="color: #fff;">-->
+<!--                                        <span style="font-size: 15px;">已签到</span>-->
+<!--                                        <span style="display:block;margin-top:-4px;font-size: 13px;">连续{{continuous_days}}天</span>-->
+<!--                                    </span>-->
+<!--                                    <span v-else style="font-size: 20px;" id="signC"><a href="javascript:;" style="color: #fff;">签到</a></span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-sm-6">-->
+<!--                            <div class="row" style="border-bottom: 1px solid #e5e5e5;">-->
+<!--                                <div style="margin: 3px 30px;"><span class="glyphicon glyphicon-user" style="opacity: .6;"></span>&nbsp;{{todaySignCount}}人</div>-->
+<!--                            </div>-->
+<!--                            <div class="row" style="margin: 6px;"><a :class="{'m-a-ml':isAddStyle}" href="javascript:;"><span class="glyphicon glyphicon-stats" style="opacity: .6;"></span>&nbsp;{{sign_ranking}}</a></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <div class="m-count">
+                        <div class="col-sm-6" style="border-right: 1px solid #e5e5e5;">
+                            <div class="row" style="border-bottom: 1px solid #e5e5e5;">
+                                <h5 align="center"><span>{{todayPostCount}}</span></h5>
+                                <h5 align="center">今日发帖数</h5>
                             </div>
-                            <div class="col-sm-8">
-                                <span><a :href="'/leek_bbs/skipPage/personal?id='+item.id" style="display:block;margin-top:10px;color: red;">{{item.username}}</a></span>
-                                <!--<span style="font-size:6px;color: #999;"></span>-->
+                            <div class="row">
+                                <h5 align="center"><span>{{postCount}}</span></h5>
+                                <h5 align="center">论坛总贴数</h5>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row" style="border-bottom: 1px solid #e5e5e5;">
+                                <h5 align="center"><span>{{yesterdayPostCount}}</span></h5>
+                                <h5 align="center">昨日发帖数</h5>
+                            </div>
+                            <div class="row">
+                                <h5 align="center"><span>{{userCount}}</span></h5>
+                                <h5 align="center">论坛会员数</h5>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-4" v-cloak>
                 <div class="row m-mar-left" style="margin-top:20px;padding-bottom: 15px;min-width: 346px;">
                     <div :class="[{'col-sm-6':true},{'m-border-top':isActiveOne}]" @mouseenter="isActiveOne=true" ><h4 align="center">热帖排行</h4></div>
                     <div :class="[{'col-sm-6':true},{'m-border-top':!isActiveOne}]" @mouseenter="isActiveOne=false"><h4 align="center">精华内容</h4></div>
@@ -140,7 +184,14 @@
     </div><!-- /中间主体部分 -->
 
     <!-- 页脚部分 -->
-
+<!--    <footer>-->
+<!--        <div class="row">-->
+<!--            <p>-->
+<!--                <span>Copyright &nbsp;© 2020 &nbsp;凛冬</span>-->
+<!--                <span>版权所有&nbsp;All Rights Reserved.</span>-->
+<!--            </p>-->
+<!--        </div>-->
+<!--    </footer>-->
 
 </div>
 
@@ -200,15 +251,18 @@
             initPlate(){
                 axios.get('/leek_bbs/bbs/plate/findAll').then(response => {
                     let data = response.data;
-                    data.forEach(item => {
-                        if (item.plate_vest.indexOf("校园专区") != -1) {
-                            this.campusList.push(item);
-                        }else if (item.plate_vest.indexOf("交流与讨论") != -1){
-                            this.exchangeList.push(item);
-                        } else {
-                            this.affairList.push(item);
+                    console.log(data);
+                    for (let i = 0 ; i < data.length; ++i) {
+                        console.log(data[i])
+                        if (data[i].plate_vest === "校园专区") {
+                            this.campusList.push(data[i])
+                        } else if (data[i].plate_vest === "交流与讨论") {
+                            this.exchangeList.push(data[i])
                         }
-                    })
+                        {
+                            this.affairList.push(data[i])
+                        }
+                    }
                 })
             },
             initAllCount(){

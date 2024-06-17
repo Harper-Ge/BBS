@@ -2,6 +2,7 @@ package com.lindong.service;
 
 import com.lindong.domain.User;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
