@@ -5,7 +5,6 @@
   },
   "logoInfo": {
     "title": "【后台管理】",
-    "image": "/leek_bbs/statics/images/logo.png",
     "href": "/leek_bbs/stair/a/b/admin/index"
   },
   "menuInfo": [
@@ -50,32 +49,6 @@
               "href": "/leek_bbs/stair/a/b/admin/posts_details-lists",
               "icon": "fa fa-comments-o",
               "target": "_self"
-            },
-            {
-              "title": "举报管理",
-              "href": "/leek_bbs/stair/a/b/admin/posts_report-lists",
-              "icon": "fa fa-list-alt",
-              "target": "_self"
-            }
-          ]
-        },
-        {
-          "title": "公告管理",
-          "href": "",
-          "icon": "fa fa-flag-o",
-          "target": "_self",
-          "child": [
-            {
-              "title": "公告管理",
-              "href": "/leek_bbs/stair/a/b/admin/notice-manage",
-              "icon": "fa fa-list-alt",
-              "target": "_self"
-            },
-            {
-              "title": "公告发表",
-              "href": "/leek_bbs/stair/a/b/admin/notice-add",
-              "icon": "fa fa-navicon",
-              "target": "_self"
             }
           ]
         },
@@ -98,12 +71,6 @@
               "target": "_self"
             }
           ]
-        },
-        {
-          "title": "系统日志",
-          "href": "/leek_bbs/stair/a/b/admin/sys_log-lists",
-          "icon": "fa fa-gears",
-          "target": "_self"
         }
       ]
     }

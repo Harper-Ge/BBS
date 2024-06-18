@@ -7,10 +7,10 @@ import org.apache.shiro.session.SessionException;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.LogoutFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-
 
 public class ShiroLogoutFilter extends LogoutFilter {
 

@@ -59,8 +59,11 @@ public class LeadPostController {
         post.setTitle((String)map.get("title"));
         post.setPlate_id(Integer.parseInt(String.valueOf( map.get("plateId")))); //获取帖子所属版块id
         post.setPost_author((String)map.get("postAuthor")); //获取帖子作者
+       /* Date publish_time = strToDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(map.get("publishTime")));
+        post.setPublish_time(publish_time); //获取帖子发表的时间*/
         post.setContent((String)map.get("content"));  //获取发表帖子的内容
         post.setLast_reply((String)map.get("lastReply")); //获取最后回复者
+        //post.setLast_reply_time((Date)map.get("lastReplyTime")); //获取最后回复时间
         Integer result = iPostService.insertNewPost(post);
         return result;
     }

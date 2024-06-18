@@ -158,14 +158,7 @@
 				<button class="layui-btn layui-btn-primary layui-btn-xs " id="myPost" @click="getPostData('MyPost',1)" v-show="checkLoginStatus">我的帖子</button>
 			</div>
 			<div class="layui-col-sm1">
-				<button
-					class="layui-btn
-					layui-btn-primary
-					layui-btn-warm
-					layui-btn-xs btn2"
-					id="btnShow">
-					发表最新主题
-				</button>
+				<button class="layui-btn layui-btn-primary layui-btn-warm layui-btn-xs btn2 " id="btnShow">发表最新主题</button>
 			</div>
 		</div>
 		<!--分类按钮结束-->
@@ -178,6 +171,15 @@
 			<div class="layui-col-sm1" style="float: left;margin-left: -10px">
 				<span>板块/群组</span>
 			</div>
+			<div class="layui-col-sm1" style="float: left;margin-left: -3px">
+				<span>作者</span>
+			</div>
+			<div class="layui-col-sm1" style="float: left">
+				<span style="margin-left: -8px">回复/查看</span>
+			</div>
+<!--			<div class="layui-col-sm1" style="float: left">-->
+<!--				<span style="margin-left: -8px">最后发表</span>-->
+<!--			</div>-->
 		</div>
 		<!--内容头结束-->
 		<!--内容开始-->
@@ -190,6 +192,55 @@
 				<div class="layui-col-sm1 font-site">
 					<a href="#" style="padding-top: 1px;" class="wid">{{item.plate.plate_name}}</a>
 				</div>
+				<div class="layui-col-sm1 font-site " style="line-height: 11px">
+					<div class=" dropdown pop-bgc-img">
+						<a href="#"  class="wid" @mouseout="getUserInfo(item.user_id,item.total_experience)">{{item.post_author}}</a>
+						<!--资料卡片开始getGrade(50)-->
+						<div class="dropdown-content " style="width: 280px; height:150px;">
+							<div class="layui-row">
+								<div class="layui-col-sm3">
+									<img  :src="'/leek_bbs/'+leadUserInfo.picture" alt="我是一个头像">
+								</div>
+								<div class="layui-col-sm7">
+									<div class="layui-row font-layout" style="margin-left: -5px;color: #974c19;font-weight: bold">
+										<div class="layui-col-sm12">
+											{{leadUserInfo.another_name}}
+										</div>
+									</div>
+									<div class="layui-row font-layout" style="margin-left: -5px;color: #974c19;">
+										<div class="layui-col-sm12">
+											{{leadUserInfo.personalized_sign}}
+										</div>
+									</div>
+								</div>
+								<div class="layui-col-sm2 font-layout" style="word-break: break-word;color: #999 !important;padding-left: 0px;">
+									{{gradeInfo.name}}
+								</div>
+							</div>
+							<div class="layui-row">
+								<div class="layui-col-sm12 btn-layout">
+									<button class="layui-btn layui-btn-primary layui-btn-xs btn1">收听他</button>
+									<button class="layui-btn layui-btn-primary layui-btn-xs btn1 btn1-layout">加为好友</button>
+									<button class="layui-btn layui-btn-primary layui-btn-xs btn1 btn1-layout">发送消息</button>
+									<button class="layui-btn layui-btn-primary layui-btn-xs btn1 btn1-layout">打个招呼</button>
+									<button class="layui-btn layui-btn-primary layui-btn-xs btn1" style="margin-left: 0px;margin-top: -6px">给我留言</button>
+								</div>
+							</div>
+							<div style="background-color:#F3F3F3;height: 25px"></div>
+						</div>
+						<!--资料卡片结束-->
+					</div>
+
+					<p style="padding-top: 4px;"  class="wid"><em>{{changePublishTime(item.publish_time)}}</em></p>
+				</div>
+				<div class="layui-col-sm1 font-site" style="line-height: 11px;">
+					<a href="#"  class="wid">{{item.browse_count}}</a>
+					<p style="padding-top: 4px;"  class="wid"><em>{{item.reply_count}}</em></p>
+				</div>
+<!--				<div class="layui-col-sm1 font-site" style="line-height: 11px">-->
+<!--					<a href="#"  class="wid" >{{item.last_reply}}</a>-->
+<!--					<p style="padding-top: 4px;" class="wid"><em>{{changePublishTime(item.last_reply_time)}}</em></p>-->
+<!--				</div>-->
 			</div>
 		</div>
 		<!--内容结束-->
@@ -434,7 +485,7 @@
                     console.log("2222"+plateId)
                     top.layer.open({
                         type: 1,
-						content: `
+                        content: `
 				<div class="layui-container" style="width: 100%;height: 100%">
 		  <div class="layui-col-xs12">
 			<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">

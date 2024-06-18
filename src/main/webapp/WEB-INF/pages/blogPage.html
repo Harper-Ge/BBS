@@ -269,12 +269,12 @@
                         <div class="row p-left-nature">
                             <div class="col-sm-4" ><span>{{PostsInfo.themeCount}}</span><br><span>主题</span></div>
                             <div class="col-sm-4" ><span>{{PostsInfo.postsCount}}</span><br><span>帖子</span></div>
-<!--                            <div class="col-sm-4" style="border: none;"><span>{{PostsInfo.total_integral}}</span><br><span>积分</span></div>-->
+                            <div class="col-sm-4" style="border: none;"><span>{{PostsInfo.total_integral}}</span><br><span>积分</span></div>
                         </div>
-<!--                        <div class="row p-left-nature" style="background-color: transparent;">-->
-<!--                            <h5>用户组: &nbsp;{{PostsInfo.grade.name}}</h5>-->
-<!--                            <h5><span>等级: &nbsp;</span><img style="vertical-align:text-top;" :src="'/leek_bbs/statics/images'+PostsInfo.grade.img" alt="等级" title="等级"></h5>-->
-<!--                        </div>-->
+                        <div class="row p-left-nature" style="background-color: transparent;">
+                            <h5>用户组: &nbsp;{{PostsInfo.grade.name}}</h5>
+                            <h5><span>等级: &nbsp;</span><img style="vertical-align:text-top;" :src="'/leek_bbs/statics/images'+PostsInfo.grade.img" alt="等级" title="等级"></h5>
+                        </div>
                         <div class="row" style="margin: 0px auto;padding-bottom: 30px;" v-if="isOneself(PostsInfo.user_id)"><!---->
                             <a class="btn btn-default btn-sm" @click="addUserAttention(PostsInfo.user_id,PostsInfo.picture)" style="width:76px;color: #fff;background-color: #CA0C16;" >关注</a>
                             <a class="btn btn-default btn-sm" @click="openWindow1(PostsInfo)" style="width:76px;color: #fff;background-color: #3399EA;">发送消息</a>
@@ -309,14 +309,14 @@
                                 <i class="layui-icon layui-icon-star-fill"></i>
                                 <span>收藏&nbsp;{{PostsInfo.post_collect}}</span>
                             </a>
-<!--                            <a class="btn btn-default btn-sm" @click="changPostData(1)" title="评分表立场">-->
-<!--                                <i class="layui-icon layui-icon-praise"></i>-->
-<!--                                <span>评分&nbsp;{{PostsInfo.post_grade}}</span>-->
-<!--                            </a>-->
-<!--                            <a class="btn btn-default btn-sm" @click="postsShare()" title="分享推精华">-->
-<!--                                <i class="layui-icon layui-icon-share"></i>-->
-<!--                                <span>分享&nbsp;{{PostsInfo.share_count}}</span>-->
-<!--                            </a>-->
+                            <a class="btn btn-default btn-sm" @click="changPostData(1)" title="评分表立场">
+                                <i class="layui-icon layui-icon-praise"></i>
+                                <span>评分&nbsp;{{PostsInfo.post_grade}}</span>
+                            </a>
+                            <a class="btn btn-default btn-sm" @click="postsShare()" title="分享推精华">
+                                <i class="layui-icon layui-icon-share"></i>
+                                <span>分享&nbsp;{{PostsInfo.share_count}}</span>
+                            </a>
                             <a class="btn btn-default btn-sm" @click="changPostData(2)" style="width: 81.2px;height: 32.8px;" title="顶">
                                 <i class="glyphicon glyphicon-arrow-up" style="margin-top: 2px;"></i>
                                 <span>顶&nbsp;{{PostsInfo.post_top}}</span>
@@ -464,7 +464,14 @@
 
 
     <!-- 页脚部分 -->
-
+<!--    <footer>-->
+<!--        <div class="row">-->
+<!--            <p>-->
+<!--                <span>Copyright &nbsp;© 2020 &nbsp;凛冬</span>-->
+<!--                <span>版权所有&nbsp;All Rights Reserved.</span>-->
+<!--            </p>-->
+<!--        </div>-->
+<!--    </footer>-->
 
 </div>
 

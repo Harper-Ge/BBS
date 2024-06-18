@@ -18,7 +18,7 @@ Vue.component('head_menu_comp', {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/leek_bbs/skipPage/index"><img src="/leek_bbs/statics/images/logo.png" width="70" height="35" style="margin-top: -10px" alt=""></a>
+                    <a class="navbar-brand" href="/leek_bbs/skipPage/index"></a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -596,7 +596,7 @@ function websocketLinkStart(userInfo) {
     if(WebSocket){
         //ws = new WebSocket("ws://jxz.free.qydev.com:8080/websocket/"+userInfo.id);
         //本地连接
-         ws = new WebSocket("ws://127.0.0.1/leek_bbs/websocket/"+userInfo.id);
+         ws = new WebSocket("ws://127.0.0.1:8080/leek_bbs/websocket/" + userInfo.id);
     }else {
         alert("您的浏览器不支持Websocket!");
     }
